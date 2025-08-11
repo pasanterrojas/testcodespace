@@ -12,11 +12,12 @@ import smtplib
 from email.message import EmailMessage
 import ssl
 
+
 # ───────────────────── Configuración ──────────────────────
-SMTP_SERVER   = "smtp.gmail.com"
+SMTP_SERVER   = "smtp.office365.com"
 SMTP_PORT     = 587
-SMTP_USER     = os.getenv("SMTP_USER", "escaner.mfp17@gmail.com")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "mpcrstvcqfcdeqzu")  # Usa variables de entorno si podés
+SMTP_USER     = os.getenv("SMTP_USER", "centro.competencias@iica.int")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "QHW*5=iE%BwV")  # Usa variables de entorno si podés
 
 # ───────────────────── FastAPI ────────────────────────────
 app = FastAPI(
