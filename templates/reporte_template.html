@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte – {{ tipo|title }}</title>
+
+    <!-- —— Estilos básicos —— -->
+    <style>
+        @page {
+            margin: 2cm;
+        }
+
+        /* márgenes del PDF */
+        body {
+            font-family: "Helvetica", Arial, sans-serif;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 24pt;
+            margin: 0;
+        }
+
+        section {
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            color: #0056b3;
+            font-size: 14pt;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Tabla de preguntas–respuestas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+        }
+
+        th {
+            background: #f1f5fb;
+            text-align: left;
+        }
+
+        /* Lista de recomendaciones */
+        ol {
+            padding-left: 18px;
+        }
+
+        /* Pie de página fijo */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 8pt;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- —— Cabecera —— -->
+    <header>
+        <h1>Reporte de Madurez Digital – {{ tipo|title }}</h1>
+    </header>
+
+    <!-- —— Resumen —— -->
+    <section id="resumen">
+        <h2>Resumen</h2>
+        <p>{{ resumen }}</p>
+    </section>
+    <!-- —— Análisis por tema —— -->
+    <section id="detalle">
+        <h2>Análisis por tema</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tema</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for i in range(temas|length) %}
+                <tr>
+                    <td>{{ temas[i] }}</td>
+                    <td>
+                        {% if calificaciones[i] is defined %}
+                        {{ calificaciones[i] }}/10
+                        {% else %}
+                        Sin calificación
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+
+
+        </table>
+    </section>
+
+
+    <!-- —— Recomendaciones —— -->
+    <section id="recomendaciones">
+        <h2>Recomendaciones</h2>
+        <ol>
+            {% for rec in recomendaciones %}
+            <li>{{ rec }}</li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <!-- —— Pie de página —— -->
+    <footer>
+        Generado automáticamente el {{ fecha }}
+    </footer>
+</body>
+
+</html>

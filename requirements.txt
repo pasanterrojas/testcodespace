@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+Jinja2
+WeasyPrint
+python-multipart
+pydantic[email]
